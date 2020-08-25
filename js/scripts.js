@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", startScript);
+document.addEventListener("DOMContentLoaded", handleClick);
 
 function startScript() {
   console.log("Hello World");
   document.body.style.cssText =
-    "background-image: url(img/bg.jpg); background-position: center center";
+    "background-image: url(img/bg.jpg); background-position: center; background-size: cover;";
 
   const divEl = document.createElement("div");
   divEl.setAttribute("id", "title-wrapper");
@@ -20,4 +21,25 @@ function startScript() {
 
   document.body.appendChild(divEl);
   document.body.appendChild(h1El);
+}
+
+// EXTRA
+
+function handleClick() {
+  const aboutBtn = document.querySelector("#about");
+  aboutBtn.addEventListener("click", loadAbout);
+
+  function loadAbout() {
+    const newDivEl = document.createElement("div");
+    newDivEl.setAttribute("id", "content");
+    newDivEl.setAttribute(
+      "style",
+      "width: fit-content; margin: auto; background: black; color: #FFF; font-size: 24px;"
+    );
+    newDivEl.innerHTML = "Welcome ...";
+    document.body.appendChild(newDivEl);
+
+    const hideTitle = document.querySelector("#title");
+    hideTitle.hidden = true;
+  }
 }

@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", handleClick);
 function startScript() {
   console.log("Hello World");
   document.body.style.cssText =
-    "background-image: url(img/bg.jpg); background-position: center; background-size: cover;";
+    "background-image: url(img/bg.jpg); background-position: top center; background-size: cover;";
 
   const divEl = document.createElement("div");
   divEl.setAttribute("id", "title-wrapper");

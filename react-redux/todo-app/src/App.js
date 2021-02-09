@@ -1,20 +1,22 @@
 import React from "react";
+import "./App.css";
 import AddTodo from "./containers/AddTodo";
 import TodoList from "./containers/TodoList";
 import VisibilityFilter from "./containers/VisibilityFilter";
-
-const filters = ["all", "completed", "incomplete"];
+import { Provider } from "react-redux";
+import store from "./reducers/store";
 
 const App = () => {
   return (
-    <div className="App">
-      <h1>TODO PLANNER</h1>
-      <AddTodo />
-      <TodoList todos={[{ content: "Task 1" }, { content: "Task 2" }]} />
-      <VisibilityFilter filters={filters}/>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <h1>TODO PLANNER</h1>
+        <AddTodo />
+        <TodoList/>
+        <VisibilityFilter/>
+      </div>
+    </Provider>
   );
 };
 
-
-export default App
+export default App;

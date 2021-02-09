@@ -1,26 +1,64 @@
-import React from "react";
+import { FILTER_ALL } from "../actions/actionTypes";
+import { ADD_TODO, TOGGLE_TODO, DELETE_TODO, SET_FILTER } from "../actions/actionTypes"
 
-const Reducer = (state = initialState, action) => {
-  return <div></div>;
+const initialTodoState = {
+  nextID: 2,
+  data: {
+    1: {
+      content: "Content 1",
+      completed: false,
+    },
+  },
 };
 
-// const URI = "http://localhost:8080/todos";
-
-const initialState = {
-    // To be moved to Db.json file and replaced with URI
-    "todos":[
-        {
-            "text": "Local Champion",
-            "completed": false,
-            "id": 6
+const todos = (state = initialTodoState, action) => {
+  switch (action.type) {
+    case ADD_TODO: {
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [state.nextId]: {
+            completed: false,
+            content: action.payload.content,
+          },
         },
-        {
-            "text": "International Champion",
-            "completed": true,
-            "id": 5
-        }
 
-    ]
+        nextId: state.nextId + 1,
+      };
+    }
+
+    case TOGGLE_TODO: {
+      console.log(action.payload);
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [action.payload.id]: {
+            ...state.data[action.payload.id],
+            completed: !state.data[action.payload.id].completed,
+          },
+        },
+      };
+    }
+
+    default:
+      return state;
+  }
 };
 
-export default Reducer;
+const visibilityFilter = (state = { activeFilter: FILTER_ALL }, action) => {
+  switch (action.type) {
+    case SET_FILTER: {
+      return {
+        activeFilter: action.payload.filter,
+      };
+    }
+
+    default: {
+      return state;
+    }
+  }
+};
+
+export { todos, visibilityFilter };

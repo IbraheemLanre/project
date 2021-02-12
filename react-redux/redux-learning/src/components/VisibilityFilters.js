@@ -1,6 +1,6 @@
 import React from "react";
 import cx from "classnames";
-import { VISIBILITY_FILTERS } from "../redux/constants";
+import { VISIBILITY_FILTERS } from "../redux/visibilityConstants";
 
 const VisibilityFilters = ({ activeFilter }) => {
   return (

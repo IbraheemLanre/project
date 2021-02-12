@@ -1,4 +1,5 @@
 import React from "react";
+import cx from "classnames";
 
 const Todo = ({ todo }) => (
   <li
@@ -11,7 +12,9 @@ const Todo = ({ todo }) => (
         "todo-item__text",
         todo && todo.completed && "todo-item__text--completed"
       )}
-    ></span>
+    >
+      {todo.content}
+    </span>
   </li>
 );
 

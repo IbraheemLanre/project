@@ -15,9 +15,13 @@ const VisibilityFilters = ({ activeFilter }) => {
               currentFilter === activeFilter && "filter--active"
             )}
             onClick={() => {} /*waiting for setFilter handlers*/}
-          ></span>
+          >
+            {currentFilter}
+          </span>
         );
       })}
     </div>
   );
 };
+
+export default VisibilityFilters;

@@ -5,7 +5,7 @@ const initialState = {
   byIds: {},
 };
 
-const todoReducer = (state = initialState, action) => {
+const todoReducers = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO: {
       // const id = action.payload.id
@@ -40,4 +40,4 @@ const todoReducer = (state = initialState, action) => {
   }
 };
 
-export default todoReducer;
+export default todoReducers;

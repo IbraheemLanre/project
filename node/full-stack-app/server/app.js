@@ -11,19 +11,23 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // create
-app.post("/insert", (req, res) => {
-    console.log(request.body)
+app.post("/insert", async (req, res) => {
+  // console.log(req.body)
+  const { name } = req.body;
+  const data = await dbService.insertNewName(name);
+
+res.json({data:data})
 });
 
 // read
 app.get("/getall", async (req, res) => {
   const data = await dbService.getAll();
-//   result
-//     .then((data) => res.json({ data: data }))
-//     .catch((err) => console.log(err));
-    res.json({
-      data: data,
-    });
+  //   result
+  //     .then((data) => res.json({ data: data }))
+  //     .catch((err) => console.log(err));
+  res.json({
+    data: data,
+  });
 });
 
 // update

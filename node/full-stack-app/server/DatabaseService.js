@@ -60,6 +60,24 @@ class DbService {
       console.log(err);
     }
   }
+
+  async insertNewName(name) {
+    try {
+      const dateAdded = new Date();
+      const insertId = await new Promise((resolve, reject) => {
+        const query = "INSERT INTO names (name, date_added) VALUES (?,?);";
+
+        connection.query(query, [name, dateAdded], (err, result) => {
+          if (err) reject(new Error(err.message));
+          resolve(result.insertId);
+        });
+      });
+      // console.log(insertId);
+      return insertId;
+    } catch (err) {
+      console.log(err);
+    }
+  }
 }
 
 module.exports = new DbService();

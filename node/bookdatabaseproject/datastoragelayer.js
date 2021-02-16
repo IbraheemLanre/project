@@ -17,8 +17,8 @@ class DataStorage {
       port: process.env.PORT,
       host: process.env.HOST,
       user: process.env.USER,
-      database: process.env.DATABASE,
       password: process.env.PASSWORD,
+      database: process.env.DATABASE,
     });
   }
 
@@ -32,7 +32,7 @@ class DataStorage {
       }
     });
   } // end of getAll
-}; // class end
+} // class end
 
 const db = new DataStorage();
 db.getAll().then(console.log).catch(console.log);

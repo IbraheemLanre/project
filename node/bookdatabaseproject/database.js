@@ -2,7 +2,7 @@
 
 const mariadb = require("mariadb");
 
-class Database {
+module.exports = class Database {
   options = "";
   constructor(options) {
     this.options = options;

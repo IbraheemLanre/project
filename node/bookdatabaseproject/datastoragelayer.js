@@ -11,7 +11,7 @@ const removeSql = sql.remove.join(" ");
 const dotenv = require("dotenv");
 dotenv.config();
 
-module.exports = class DataStorage {
+class DataStorage {
   constructor() {
     this.db = new Database({
       port: process.env.PORT,
@@ -21,10 +21,18 @@ module.exports = class DataStorage {
       password: process.env.PASSWORD,
     });
   }
-};
 
-console.log(getAllSql);
-console.log(getSql);
-console.log(insertSql);
-console.log(updateSql);
-console.log(removeSql);
+  getAll() {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const result = await this.db.doQuery(getAllSql);
+        resolve(result.queryResult);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  } // end of getAll
+}; // class end
+
+const db = new DataStorage();
+db.getAll().then(console.log).catch(console.log);

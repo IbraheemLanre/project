@@ -11,7 +11,7 @@ const removeSql = sql.remove.join(" ");
 const dotenv = require("dotenv");
 dotenv.config();
 
-class DataStorage {
+module.exports = class DataStorage {
   constructor() {
     this.db = new Database({
       port: process.env.PORT,
@@ -32,7 +32,19 @@ class DataStorage {
       }
     });
   } // end of getAll
-} // class end
 
-const db = new DataStorage();
-db.getAll().then(console.log).catch(console.log);
+  get(id) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const result = await this.db.doQuery(getSql, [+id]);
+        if(result.queryResult.length > 0){
+            resolve(result.queryResult[0])
+        }else{
+            resolve({status:`id ${id} not found`})
+        }
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+}; // class end

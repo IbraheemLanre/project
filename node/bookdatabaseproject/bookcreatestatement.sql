@@ -10,10 +10,10 @@ create table book(
     year integer not null
 );
 
-drop user if exists 'adrain'@'localhost';
+drop user if exists 'adrian'@'localhost';
 create user 'adrian'@'localhost' identified by 'tN5LKSaK';
 
 grant all privileges on bookdb.* to 'adrian'@'localhost';
 
-insert into book values(1,'The beautiful ones are not yet born', 'Ayi Kwei Armah', 'Novel', 1968);
-insert into book values(2, 'The gods are not to blame', 'Ola Rotimi', 'Novel', 1971);
+insert into book values(1,'The beautiful ones are not yet born', 'Ayi Kwei Armah', 'novel', 1968);
+insert into book values(2, 'The gods are not to blame', 'Ola Rotimi', 'novel', 1971);

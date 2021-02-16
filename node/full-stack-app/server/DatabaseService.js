@@ -73,9 +73,31 @@ class DbService {
         });
       });
       // console.log(insertId);
-      return insertId;
+      return {
+        id: insertId,
+        name: name,
+        dateAdded: dateAdded,
+      };
     } catch (err) {
       console.log(err);
+    }
+  }
+
+  async deleteRåowById(id) {
+    try {
+      id = parseInt(id, 10);
+      const response = await new Promise((resolve, reject) => {
+        const query = "DELETE FROM names WHERE id= ?;";
+
+        connection.query(query, [id], (err, result) => {
+          if (err) reject(new Error(err.message));
+          resolve(result.affectedRows);
+        });
+      });
+      return response === 1 ? true : false;
+    } catch (err) {
+      console.log(err);
+      return false;
     }
   }
 }

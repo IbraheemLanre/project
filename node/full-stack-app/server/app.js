@@ -16,7 +16,7 @@ app.post("/insert", async (req, res) => {
   const { name } = req.body;
   const data = await dbService.insertNewName(name);
 
-res.json({data:data})
+  res.json({ data: data });
 });
 
 // read
@@ -33,6 +33,11 @@ app.get("/getall", async (req, res) => {
 // update
 
 // delete
+app.delete("/delete/:id", (req, res) => {
+  const { id } = req.params;
+  const data = dbService.deleteRåowById(id);
+  res.json({ success: data });
+});
 
 app.listen(process.env.PORT, () =>
   console.log("App is listening on port", process.env.PORT)

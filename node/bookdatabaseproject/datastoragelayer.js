@@ -3,6 +3,7 @@
 const Database = require("./database");
 const sql = require("./sqlstatement.json");
 const { placeholderValues } = require("./parameters");
+const { CODES, MESSAGES } = require("./statusCodes");
 const getAllSql = sql.getAll.join(" ");
 const getSql = sql.get.join(" ");
 const insertSql = sql.insert.join(" ");
@@ -22,13 +23,17 @@ module.exports = class DataStorage {
     });
   }
 
+  get CODES() {
+    return CODES;
+  }
+
   getAll() {
     return new Promise(async (resolve, reject) => {
       try {
         const result = await this.db.doQuery(getAllSql);
         resolve(result.queryResult);
       } catch (err) {
-        reject(err);
+        reject(MESSAGES.PROGRAM_ERROR());
       }
     });
   } // end of getAll
@@ -40,10 +45,10 @@ module.exports = class DataStorage {
         if (result.queryResult.length > 0) {
           resolve(result.queryResult[0]);
         } else {
-          resolve({ status: `id ${id} not found` });
+          resolve(MESSAGES.NOT_FOUND("bookId", id));
         }
       } catch (err) {
-        reject(err);
+        reject(MESSAGES.PROGRAM_ERROR());
       }
     });
   } // get ends here
@@ -55,9 +60,9 @@ module.exports = class DataStorage {
           insertSql,
           placeholderValues(resource)
         );
-        resolve({ status: "Insert OK" });
+        resolve(MESSAGES.INSERT_OK("bookId", resource.bookId));
       } catch (err) {
-        reject(err);
+        reject(MESSAGES.PROGRAM_ERROR());
       }
     });
   } // insert ends here
@@ -70,12 +75,12 @@ module.exports = class DataStorage {
           placeholderValues(resource)
         );
         if (status.queryResult.rowsChanged === 0) {
-          resolve({ status: "Not updated" });
+          resolve(MESSAGES.NOT_UPDATED());
         } else {
-          resolve({ status: "Update OK" });
+          resolve(MESSAGES.UPDATE_OK("bookId", resource.bookId));
         }
       } catch (err) {
-        reject(err);
+        reject(MESSAGES.PROGRAM_ERROR());
       }
     });
   } // update ends here
@@ -85,12 +90,12 @@ module.exports = class DataStorage {
       try {
         const result = await this.db.doQuery(removeSql, [+id]);
         if (result.queryResult.rowsChanged === 1) {
-          resolve({ status: "Remove OK" });
+          resolve(MESSAGES.DELETE_OK("bookId", id));
         } else {
-          resolve({ status: `resource with ${id} not removed` });
+          resolve(MESSAGES.NOT_DELETED("bookId", id));
         }
       } catch (err) {
-        reject(err);
+        reject(MESSAGES.PROGRAM_ERROR());
       }
     });
   } //end of remove

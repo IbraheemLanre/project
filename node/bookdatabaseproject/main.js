@@ -5,6 +5,7 @@ const db = new DataStorage();
 
 const menuText = `
 Choose:
+
 1. Get All
 2. Get One
 3. Insert
@@ -12,7 +13,7 @@ Choose:
 5. Remove
 6. Exit
 
-Your choice(1,2,3,4,5 or 6)
+Your choice(1,2,3,4,5 or 6):
 `;
 
 menu();

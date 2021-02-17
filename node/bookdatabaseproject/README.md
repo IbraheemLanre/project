@@ -19,7 +19,7 @@ This is a book project created using **Node** and **MariaDB**. The idea is keepi
 
 *datastoragelayer.js* has the backend codes for implementing persistent storage of data to and fro the database.
 
-*main.js* contains code for communicating between the server, database and client.
+*main.js* contains code for communicating between the server, database and client in **Node** using IDE.
 
 
 ### TODO

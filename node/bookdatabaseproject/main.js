@@ -39,8 +39,8 @@ async function menu() {
         const id = await prompt("Input book id: ");
         try {
           const result = await db.get(+id);
-          if (result.status) {
-            console.log(result.status);
+          if (result.message) {
+            console.log(result.message);
           } else {
             printBook(result);
           }
@@ -51,7 +51,7 @@ async function menu() {
       case "3":
         try {
           const result = await db.insert(await readBookData());
-          console.log(result.status);
+          console.log(result);
         } catch (err) {
           console.log(err);
         }
@@ -59,7 +59,7 @@ async function menu() {
       case "4":
         try {
           const result = await db.update(await readBookData());
-          console.log(result.status);
+          console.log(result);
         } catch (err) {
           console.log(err);
         }
@@ -68,7 +68,7 @@ async function menu() {
         try {
           const id = await prompt("Input bookId: ");
           const result = await db.remove(+id);
-          console.log(result.status);
+          console.log(result);
         } catch (err) {
           console.log(err);
         }

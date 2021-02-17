@@ -15,7 +15,7 @@ dotenv.config();
 module.exports = class DataStorage {
   constructor() {
     this.db = new Database({
-      port: process.env.PORT,
+      port: process.env.DB_PORT,
       host: process.env.HOST,
       user: process.env.USER,
       password: process.env.PASSWORD,

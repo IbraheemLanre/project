@@ -7,3 +7,5 @@ const placeholderValues = (book) => [
   +book.year,
   +book.bookId,
 ];
+
+module.exports = { placeholderValues };

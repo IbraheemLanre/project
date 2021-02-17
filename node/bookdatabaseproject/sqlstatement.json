@@ -2,7 +2,7 @@
     "getAll":["select bookId, name, author, type, year from book"],
     "get":["select bookId, name, author, type, year from book where bookId=?"],
     "insert":["insert into book(name, author, type, year, bookId) values(?,?,?,?,?)"],
-    "update":["update book set name=?, author=?, type=?, year=?, where bookId=?"],
+    "update":["update book set name=?, author=?, type=?, year=? where bookId=?"],
     "remove":["delete from book where bookId=?"]
 
 }

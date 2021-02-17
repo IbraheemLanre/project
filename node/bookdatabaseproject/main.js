@@ -47,6 +47,31 @@ async function menu() {
           console.log(err);
         }
         break;
+      case "3":
+        try {
+          const result = await db.insert(await readBookData());
+          console.log(result.status);
+        } catch (err) {
+          console.log(err);
+        }
+        break;
+      case "4":
+        try {
+          const result = await db.update(await readBookData());
+          console.log(result.status);
+        } catch (err) {
+          console.log(err);
+        }
+        break;
+      case "5":
+        try {
+          const id = await prompt("Input bookId: ");
+          const result = await db.remove(+id);
+          console.log(result.status);
+        } catch (err) {
+          console.log(err);
+        }
+        break;
       case "6":
         exited = true;
         break;
@@ -76,4 +101,20 @@ function printBook(book) {
     ` and published in the year ${book.year}.`;
 
   console.log(message);
+}
+
+async function readBookData() {
+  const bookId = +(await prompt("Input bookId: "));
+  const name = await prompt("Input name: ");
+  const author = await prompt("Input author: ");
+  const type = await prompt("Input type: ");
+  const year = +(await prompt("Input year: "));
+
+  return {
+    bookId,
+    name,
+    author,
+    type,
+    year,
+  };
 }

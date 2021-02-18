@@ -106,6 +106,22 @@ app.post("/update", (req, res) =>
     .catch((error) => res.render("statuspage", { status: error }))
 );
 
+app.get("/remove", (req, res) =>
+  res.render("getonepage", {
+    title: "Remove",
+    header: "Remove",
+    action: "/remove",
+  })
+);
+
+app.post("/remove", (req, res) => {
+  const bookId = req.body.bookId;
+  storage
+    .remove(bookId)
+    .then((result) => res.render("bookpage", { data: result }))
+    .catch((error) => res.render("statuspage", { status: error }));
+});
+
 server.listen(process.env.PORT, process.env.HOST, () =>
   console.log(`Server ${process.env.HOST}:${process.env.PORT} is ready`)
 );

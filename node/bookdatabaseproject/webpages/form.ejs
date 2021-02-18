@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <main>
+        <h1><%= header %></h1>
+        <form action="<%= action %>" method="POST">
+            <div>
+                <p>
+                    <label for="bookId">BookId:</label>
+                    <input type="text" name="bookId" id="bookId" size="5" value="<%= bookId.value %>" <%= bookId.readonly%>>
+                </p>
+                <p>
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" size="62" value="<%= name.value %>" <%= name.readonly%>>
+                </p>
+                <p>
+                    <label for="author">Author:</label>
+                    <input type="text" name="author" id="author" size="25" value="<%= author.value %>" <%= author.readonly%>>
+                </p>
+                <p>
+                    <label for="type">Type:</label>
+                    <input type="text" name="type" id="type" size="26" value="<%= type.value %>" <%= type.readonly%>>
+                </p>
+                <p>
+                    <label for="year">Year:</label>
+                    <input type="text" name="year" id="year" size="10" value="<%= year.value %>" <%= year.readonly%>>
+                </p>
+            </div>
+<button type="submit">Submit</button>
+        </form>
+        <a href="/"><button>Menu</button></a>
+    </main>
+</body>
+</html>

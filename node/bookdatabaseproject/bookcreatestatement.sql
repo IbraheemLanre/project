@@ -5,7 +5,7 @@ use bookdb;
 create table book(
     bookId integer not null primary key,
     name varchar(62) not null,
-    author varchar(12) not null,
+    author varchar(25) not null,
     type varchar(26) not null,
     year integer not null
 );

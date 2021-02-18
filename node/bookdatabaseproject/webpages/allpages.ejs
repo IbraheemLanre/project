@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Books</title>
-</head>
-<body>
-<main>
-    <h1>All Books</h1>
-    <table>
+  </head>
+  <body>
+    <main>
+      <h1>All Books</h1>
+      <table>
         <thead>
-            <tr>
-                <th>BookId</th>
-                <th>Name</th>
-                <th>Author</th>
-                <th>Type</th>
-                <th>Year</th>
-            </tr>
+          <tr>
+            <th>BookId</th>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Type</th>
+            <th>Year</th>
+          </tr>
         </thead>
         <tbody>
-            <% %>
+          <% data.forEach(book =>{ %>
+          <tr>
+            <td><%= book.bookId %></td>
+            <td><%= book.name %></td>
+            <td><%= book.author %></td>
+            <td><%= book.type %></td>
+            <td><%= book.year %></td>
+          </tr>
+          <% }) %>
         </tbody>
-    </table>
-</main>
-</body>
+      </table>
+      <a href="/"><button>Menu</button></a>
+    </main>
+  </body>
 </html>

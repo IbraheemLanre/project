@@ -12,31 +12,52 @@ app.use(express.urlencoded({ extended: false }));
 
 // create
 app.post("/insert", async (req, res) => {
-  // console.log(req.body)
-  const { name } = req.body;
-  const data = await dbService.insertNewName(name);
+  try {
+    const { name } = req.body;
+    const result = await dbService.insertNewName(name);
 
-  res.json({ data: data });
+    res.json({ data: result });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // read
-app.get("/getall", async (req, res) => {
-  const data = await dbService.getAll();
-  //   result
-  //     .then((data) => res.json({ data: data }))
-  //     .catch((err) => console.log(err));
-  res.json({
-    data: data,
-  });
+app.get("/getall", (req, res) => {
+  const result = dbService.getAll();
+  result
+    .then((data) => res.json({ data: data }))
+    .catch((err) => console.log(err));
 });
 
 // update
+app.patch("/update", (req, res) => {
+  // console.log(req.body);
+  const { id, name } = req.body;
+  const result = dbService.updateNameById(id, name);
+
+  result
+    .then((data) => res.json({ success: data }))
+    .catch((err) => console.log(err));
+});
 
 // delete
 app.delete("/delete/:id", (req, res) => {
   const { id } = req.params;
-  const data = dbService.deleteRåowById(id);
-  res.json({ success: data });
+  const result = dbService.deleteRowById(id);
+  result
+    .then((data) => res.json({ success: data }))
+    .catch((err) => console.log(err));
+});
+
+app.get("/search/:name", async (req, res) => {
+  try {
+    const { name } = req.params;
+    const result = await dbService.searchByName(name);
+    res.json({data:result})
+  } catch (err) {
+    console.log(err)
+  }
 });
 
 app.listen(process.env.PORT, () =>

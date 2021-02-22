@@ -1,0 +1,3 @@
+{
+    "getAll":["SELECT code, name, continent, region, indepyear, population FROM country"]
+}

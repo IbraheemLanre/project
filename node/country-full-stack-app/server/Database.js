@@ -9,19 +9,17 @@ class Database {
     this.options = options;
   }
 
-  dbQueryConnection(sql, parameters, connection) {
+  dbQueryConnection(sql, connection) {
     return new Promise(async (resolve, reject) => {
       let isConnected = false;
       try {
         if (!connection) {
-          conncection = await mariadb.createConnection(this.options);
+          connection = await mariadb.createConnection(this.options);
           isConnected = true;
         }
 
-        let queryResult = await connection.query(sql, parameters);
-        if (typeof queryResult === "undefined") {
-          reject("QueryError");
-        } else if (typeof queryResult.affectedRows === "undefined") {
+        let queryResult = await connection.query(sql);
+        if (typeof queryResult.affectedRows === "undefined") {
           delete queryResult.meta;
           resolve({ queryResult, resultSet: true });
         } else {
@@ -37,10 +35,12 @@ class Database {
       } catch (err) {
         reject(`Sql-error:${err}`);
       } finally {
-        if (conncection && isConnected) {
+        if (connection && isConnected) {
           connection.end();
         }
       }
     });
   }
 }
+
+module.exports = Database;

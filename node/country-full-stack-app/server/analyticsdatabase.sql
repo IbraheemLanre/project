@@ -4,8 +4,8 @@ use analyticsdb;
 
 create table analytics (
     CountryCode char(3) not null foreign key,
-    Views integer not null,
-    LastViewedDate datetime() not null
+    Views integer default null,
+    LastViewedDate datetime default null
 );
 
 drop user if exists 'aremu'@'localhost';

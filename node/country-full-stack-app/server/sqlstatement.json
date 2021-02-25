@@ -1,8 +1,5 @@
 {
     "getAll":["SELECT code, name, continent, region, indepyear, population FROM country"],
-    "countryInfo":["SELECT name, code, language, continent, region",
-        "surfacearea, indepyear, population, governmentform, headofstate",
-        "from country join countrylanguage",
-        "on country.code=countrylanguage.countrycode where name=?"
-    ]
+    "countryInfo":["SELECT name, code, language, continent, region, surfacearea, indepyear, population, governmentform, headofstate from country join countrylanguage on country.code=countrylanguage.countrycode where name=?"],
+    "insertInfo":["INSERT INTO analytics(countrycode,views,lastvieweddate) values(?,?,?)"]
 }

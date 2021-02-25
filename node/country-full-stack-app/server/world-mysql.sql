@@ -5367,5 +5367,13 @@ INSERT INTO CountryLanguage VALUES ('CAN','Eskimo Languages',0,0.1);
 INSERT INTO CountryLanguage VALUES ('CHN','Dong',0,0.2);
 INSERT INTO CountryLanguage VALUES ('RUS','Belorussian',0,0.3);
 INSERT INTO CountryLanguage VALUES ('USA','Portuguese',0,0.2);
+
+DROP TABLE IF EXISTS analytics;
+CREATE TABLE analytics (
+    CountryCode CHAR(3) NOT NULL PRIMARY KEY,
+    Views INT(4) DEFAULT null,
+    LastViewedDate DATETIME DEFAULT NULL
+);
+
 COMMIT;
 

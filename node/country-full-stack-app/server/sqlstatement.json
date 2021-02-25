@@ -1,3 +1,8 @@
 {
-    "getAll":["SELECT code, name, continent, region, indepyear, population FROM country"]
+    "getAll":["SELECT code, name, continent, region, indepyear, population FROM country"],
+    "countryInfo":["SELECT name, code, language, continent, region",
+        "surfacearea, indepyear, population, governmentform, headofstate",
+        "from country join countrylanguage",
+        "on country.code=countrylanguage.countrycode where name=?"
+    ]
 }

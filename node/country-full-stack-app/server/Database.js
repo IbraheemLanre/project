@@ -9,7 +9,7 @@ class Database {
     this.options = options;
   }
 
-  dbQueryConnection(sql, connection) {
+  dbQueryConnection(sql, parameters, connection) {
     return new Promise(async (resolve, reject) => {
       let isConnected = false;
       try {
@@ -18,7 +18,7 @@ class Database {
           isConnected = true;
         }
 
-        let queryResult = await connection.query(sql);
+        let queryResult = await connection.query(sql, parameters);
         if (typeof queryResult.affectedRows === "undefined") {
           delete queryResult.meta;
           resolve({ queryResult, resultSet: true });

@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 const sql = require("./sqlstatement.json");
 const getAllSql = sql.getAll.join(" ");
+const countryInfoSql = sql.countryInfo.join(" ");
 
 class DataStorage {
   constructor() {
@@ -22,6 +23,21 @@ class DataStorage {
       try {
         const result = await this.db.dbQueryConnection(getAllSql);
         resolve(result.queryResult);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  getCountryInfo(name) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const result = await this.db.dbQueryConnection(countryInfoSql, [name]);
+        if (result.queryResult.length > 0) {
+          resolve(result.queryResult[0]);
+        } else {
+          resolve({ status: `Country ${name} not found` });
+        }
       } catch (err) {
         reject(err);
       }

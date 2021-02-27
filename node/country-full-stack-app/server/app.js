@@ -17,17 +17,34 @@ app.get("/getall", (req, res) => {
   storage
     .getAll()
     .then((result) => res.json({ data: result }))
-    .catch((err) => res.json(err));
+    .catch((err) => console.log(err));
 });
 
 app.get("/countryinfo/:countryName", async (req, res) => {
   try {
-    const {countryName} = req.params;
+    const { countryName } = req.params;
     const result = await storage.getCountryInfo(countryName);
     res.json({ data: result });
   } catch (err) {
     console.log(err);
   }
+});
+
+app.post("/insertviews", async (req, res) => {
+  try {
+    const { countryCode, views } = req.body;
+    const result = await storage.insertViews(countryCode, views);
+    res.json({ data: result });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+app.get("/insertviews", (req, res) => {
+  storage
+    .getViewInfo()
+    .then((result) => res.json({ data: result }))
+    .catch((err) => console.log(err));
 });
 
 server.listen(process.env.PORT, process.env.HOST, () => {

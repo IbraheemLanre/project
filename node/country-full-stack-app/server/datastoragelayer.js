@@ -6,7 +6,8 @@ dotenv.config();
 const sql = require("./sqlstatement.json");
 const getAllSql = sql.getAll.join(" ");
 const countryInfoSql = sql.countryInfo.join(" ");
-const viewSql = sql.insertInfo.join(" ");
+const viewInfoSql = sql.insertViewInfo.join(" ");
+const getViewInfoSql = sql.getViewInfo.join(" ");
 
 class DataStorage {
   constructor() {
@@ -41,15 +42,31 @@ class DataStorage {
     });
   }
 
-  getViews(id) {
+  insertViews(countryCode, views) {
     return new Promise(async (resolve, reject) => {
       try {
-        const result = await this.db.dbQueryConnection(viewSql, [+id]);
+        const dateLastViewed = new Date();
+        const result = await this.db.dbQueryConnection(viewInfoSql, [
+          countryCode,
+          views,
+          dateLastViewed,
+        ]);
+        resolve(result.queryResult);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  getViewInfo() {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const result = await this.db.dbQueryConnection(getViewInfoSql);
+        resolve(result.queryResult)
       } catch (err) {
         reject(err);
       }
     });
   }
 }
-
 module.exports = new DataStorage();

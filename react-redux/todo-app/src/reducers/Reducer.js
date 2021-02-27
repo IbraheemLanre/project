@@ -2,7 +2,7 @@ import { FILTER_ALL } from "../actions/actionTypes";
 import { ADD_TODO, TOGGLE_TODO, DELETE_TODO, SET_FILTER } from "../actions/actionTypes"
 
 const initialTodoState = {
-  nextID: 2,
+  nextId: 2,
   data: {
     1: {
       content: "Content 1",

@@ -17,9 +17,7 @@ module.exports = class Database {
           newConnection = true;
         }
         let queryResult = await connection.query(sql, parameters);
-        if (typeof queryResult === "undefined") {
-          reject("QuerryError");
-        } else if (typeof queryResult.affectedRows === "undefined") {
+        if (typeof queryResult.affectedRows === "undefined") {
           delete queryResult.meta;
           resolve({ queryResult, resultSet: true });
         } else {

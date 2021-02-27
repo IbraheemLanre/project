@@ -22,8 +22,8 @@ This is a book project created using **Node** and **MariaDB**. The idea is keepi
 *main.js* contains code for communicating between the server, database and client in **Node** using IDE.
 
 
-### TODO
-The PART II will contain codes for rendering data to webpages using **Express** and **Ejs**.
+# The PART II 
+This part contains codes for rendering data to webpages using **Express** and **Ejs**.
 
 
 

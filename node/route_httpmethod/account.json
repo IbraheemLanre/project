@@ -1,0 +1,15 @@
+[{
+    "id":1,
+    "username":"ibra",
+    "role":"admin"
+},
+{
+    "id":2,
+    "username":"emek",
+    "role":"guest"
+},
+{
+    "id":3,
+    "username":"shipa",
+    "role":"guest"
+}]

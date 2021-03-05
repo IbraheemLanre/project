@@ -1,5 +1,6 @@
 /**
  * Contains logic for backend data handling and api consumption
+ * The idea here is to use cross-origin
  */
 "use strict";
 
@@ -18,10 +19,6 @@ const server = http.createServer(app);
 
 app.use(cors());
 
-app.get("/", (req, res) =>
-  res.sendFile(path.join(__dirname, "vantaajob.html"))
-);
-
 //route
 app.get("/json", (req, res) =>
   fetch("http://gis.vantaa.fi/rest/tyopaikat/v1")
@@ -29,6 +26,7 @@ app.get("/json", (req, res) =>
     .then((data) => res.json(data))
     .catch((err) => console.log(err))
 );
+
 server.listen(port, host, () =>
   console.log(`Server localhost is ready and listening to port:${port}`)
 );

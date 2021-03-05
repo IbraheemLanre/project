@@ -1,0 +1,57 @@
+[
+    {
+        "ammattiala": "kaikki",
+        "lukumäärä": "284",
+        "linkki": "http://gis.vantaa.fi/rest/tyopaikat/v1/kaikki"
+    },
+    {
+        "ammattiala": "Opetusala",
+        "lukumäärä": "134",
+        "linkki": "http://gis.vantaa.fi/rest/tyopaikat/v1/Opetusala"
+    },
+    {
+        "ammattiala": "Harjoittelu ja kesätyö",
+        "lukumäärä": "38",
+        "linkki": "http://gis.vantaa.fi/rest/tyopaikat/v1/Harjoittelu ja kesätyö"
+    },
+    {
+        "ammattiala": "Kotihoito ja erityisasuminen",
+        "lukumäärä": "30",
+        "linkki": "http://gis.vantaa.fi/rest/tyopaikat/v1/Kotihoito ja erityisasuminen"
+    },
+    {
+        "ammattiala": "Terveyden- ja sairaanhoito",
+        "lukumäärä": "28",
+        "linkki": "http://gis.vantaa.fi/rest/tyopaikat/v1/Terveyden- ja sairaanhoito"
+    },
+    {
+        "ammattiala": "Hallinto-, esimies- ja asiantuntijatyö",
+        "lukumäärä": "13",
+        "linkki": "http://gis.vantaa.fi/rest/tyopaikat/v1/Hallinto-, esimies- ja asiantuntijatyö"
+    },
+    {
+        "ammattiala": "Tekninen ala",
+        "lukumäärä": "12",
+        "linkki": "http://gis.vantaa.fi/rest/tyopaikat/v1/Tekninen ala"
+    },
+    {
+        "ammattiala": "Varhaiskasvatus",
+        "lukumäärä": "11",
+        "linkki": "http://gis.vantaa.fi/rest/tyopaikat/v1/Varhaiskasvatus"
+    },
+    {
+        "ammattiala": "Sosiaaliala",
+        "lukumäärä": "10",
+        "linkki": "http://gis.vantaa.fi/rest/tyopaikat/v1/Sosiaaliala"
+    },
+    {
+        "ammattiala": "Liikunta-, kirjasto-, kulttuuri- ja nuorisoala",
+        "lukumäärä": "7",
+        "linkki": "http://gis.vantaa.fi/rest/tyopaikat/v1/Liikunta-, kirjasto-, kulttuuri- ja nuorisoala"
+    },
+    {
+        "ammattiala": "Palo- ja pelastusala",
+        "lukumäärä": "1",
+        "linkki": "http://gis.vantaa.fi/rest/tyopaikat/v1/Palo- ja pelastusala"
+    }
+]

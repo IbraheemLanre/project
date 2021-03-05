@@ -3,9 +3,9 @@
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
-  fetch("/json")
+  fetch("http://gis.vantaa.fi/rest/tyopaikat/v1")
     .then((result) => result.json())
-    .then((data) => drawAllBars(data))
+    .then((data) => drawAllBar(data))
     .catch((err) => console.log(err));
 }
 
@@ -16,7 +16,7 @@ function drawAllBar(data) {
   ctx.fillStyle = "blue";
   ctx.scale(1.2, 1.2);
   for (let i = 1, x = 10; i < data.length; i++, x += 30) {
-    drawBar(ctx, x, data[i]);
+    drawBar(ctx, x, data[i]); 
   }
 }
 

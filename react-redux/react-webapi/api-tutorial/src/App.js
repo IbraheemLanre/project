@@ -61,8 +61,8 @@ function App() {
           <li key={item.id}>{item.item}</li>
         ))}
       </ul>
-    </div>
-  );
+      </div>
+)
 }
 
 export default App;

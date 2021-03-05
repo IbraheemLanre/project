@@ -3,7 +3,7 @@
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
-  fetch("http://gis.vantaa.fi/rest/tyopaikat/v1")
+  fetch("//gis.vantaa.fi/rest/tyopaikat/v1")
     .then((result) => result.json())
     .then((data) => drawAllBar(data))
     .catch((err) => console.log(err));

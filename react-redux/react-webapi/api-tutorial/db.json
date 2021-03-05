@@ -1,0 +1,52 @@
+{
+  "list": [
+    {
+      "id": 1,
+      "item": "bread"
+    },
+    {
+      "id": 2,
+      "item": "grapes"
+    },
+    {
+      "item": "orange",
+      "id": 3
+    },
+    {
+      "item": "French Fries",
+      "id": 4
+    },
+    {
+      "item": "French Fries",
+      "id": 5
+    },
+    {
+      "item": "French Fries",
+      "id": 6
+    },
+    {
+      "item": "French Fries",
+      "id": 7
+    },
+    {
+      "item": "French Fries",
+      "id": 8
+    },
+    {
+      "item": "Burger",
+      "id": 9
+    },
+    {
+      "item": "Doner",
+      "id": 10
+    },
+    {
+      "item": "Chicken soup",
+      "id": 11
+    },
+    {
+      "item": "hamburger",
+      "id": 12
+    }
+  ]
+}

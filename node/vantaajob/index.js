@@ -18,7 +18,13 @@ app.get("/", (req, res) =>
   res.sendFile(path.join(__dirname, "vantaajob.html"))
 );
 
-
+//route
+app.get("/json", (req, res) =>
+  fetch("http://gis.vantaa.fi/tyopaikat/v1")
+    .then((result) => result.json())
+    .then((data) => res.json(data))
+    .catch((err) => console.log(err))
+);
 server.listen(port, host, () =>
   console.log(`Server localhost is ready and listening to port:${port}`)
 );

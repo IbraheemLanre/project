@@ -6,6 +6,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const dotenv = require("dotenv");
+const fetch = require("node-fetch");
 dotenv.config();
 const port = process.env.PORT;
 const host = process.env.HOST;
@@ -20,7 +21,7 @@ app.get("/", (req, res) =>
 
 //route
 app.get("/json", (req, res) =>
-  fetch("http://gis.vantaa.fi/tyopaikat/v1")
+  fetch("http://gis.vantaa.fi/rest/tyopaikat/v1")
     .then((result) => result.json())
     .then((data) => res.json(data))
     .catch((err) => console.log(err))

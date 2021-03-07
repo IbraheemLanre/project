@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bio Data</title>
+  </head>
+  <body>
+    <main>
+      <h1>All Bio Data</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.forEach(biodata=>{%>
+          <tr>
+            <td><%= biodata.name %></td>
+            <td><%= biodata.age %></td>
+            <td><%= biodata.date %></td>
+          </tr>
+          <%})%>
+        </tbody>
+      </table>
+      <a href="/"><button>Menu</button></a>
+    </main>
+  </body>
+</html>

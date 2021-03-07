@@ -56,6 +56,30 @@ app.post("/newpost", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+app.get("/deletepost", (req, res) =>
+  res.render("getform", {
+    title: "Delete Bio Data",
+    header: "Delete Bio Data",
+    action: "/remove",
+  })
+);
+
+app.post("/remove", (req, res) => {
+  const bioId = req.body.bioId;
+  const url = `http://localhost:8080/remove/${bioId}`;
+  const options = {
+    headers: { "Content-type": "application/json" },
+    method: "DELETE",
+    mode: "cors",
+  };
+
+  const result = fetch(url, options);
+  result
+    .then((res) => res.json())
+    .then((data) => res.render("statuspage", { status: data }))
+    .catch((err) => console.log(err));
+});
+
 server.listen(port, host, () =>
   console.log(`Server ${host} is listening to port:${port}`)
 );

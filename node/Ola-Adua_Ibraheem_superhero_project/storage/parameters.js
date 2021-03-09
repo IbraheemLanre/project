@@ -9,11 +9,11 @@ const toArrayInsert = (superhero) => [
 ];
 
 const toArrayUpdate = (superhero) => [
-  +superhero.heroId,
   superhero.name,
   +superhero.yearOfBirth,
   superhero.superproperty,
   superhero.costume,
+  +superhero.heroId
 ];
 
 module.exports = { toArrayInsert, toArrayUpdate };

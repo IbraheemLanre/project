@@ -1,6 +1,6 @@
 {
     "getAll":["select heroId, name, yearOfBirth, superproperty, costume from superhero"],
-    "get":["select name, yearOfBirth, superpropert, costume from superhero where heroId=?"],
+    "get":["select heroId, name, yearOfBirth, superproperty, costume from superhero where heroId=?"],
     "insert":["insert into superhero(heroId, name, yearOfBirth, superproperty, costume) values(?,?,?,?,?)"],
     "update":["update superhero set name=?, yearOfBirth=?, superproperty=?, costume=? where heroId=?"],
     "remove":["delete from superhero where heroId=?"],

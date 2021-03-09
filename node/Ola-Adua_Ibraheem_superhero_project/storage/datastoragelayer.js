@@ -47,34 +47,38 @@ module.exports = class DataStorage {
     });
   }
 
-  insert(resource){
-    return new Promise(async(resolve,reject)=>{
-      try{
-        const status = await this.db.doQuery(insertSql, toArrayInsert(resource))
-        resolve(MESSAGES.INSERT_OK(PRIMARY_KEY, resource(PRIMARY_KEY)))
-      }catch(err){
-        reject(MESSAGES.PROGRAM_ERROR())
-      }
-    })
-  }
-
-  update(resource) {
+  insert(resource) {
     return new Promise(async (resolve, reject) => {
       try {
         const status = await this.db.doQuery(
-          updateSql,
-          toArrayUpdate(resource)
+          insertSql,
+          toArrayInsert(resource)
         );
-        if (status.queryResult.rowsChanged === 0) {
-          resolve(MESSAGES.NOT_UPDATED());
-        } else {
-          resolve(MESSAGES.UPDATE_OK(PRIMARY_KEY, resource[PRIMARY_KEY]));
-        }
+        resolve(MESSAGES.INSERT_OK(PRIMARY_KEY, resource[PRIMARY_KEY]));
       } catch (err) {
         reject(MESSAGES.PROGRAM_ERROR());
       }
     });
-  } 
+  }
+
+  update(resource) {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const result =
+                await this.db.doQuery(updateSql, toArrayUpdate(resource));
+            if(result.queryResult.rowsChanged===0){
+                resolve(MESSAGES.NOT_UPDATED());
+            }
+            else {
+                resolve(MESSAGES.UPDATE_OK(PRIMARY_KEY, resource[PRIMARY_KEY]));
+            } 
+        }
+        catch (err) {
+          console.log(err)
+            reject(MESSAGES.PROGRAM_ERROR());
+        }
+    });
+} //end of update
 
   remove(id) {
     return new Promise(async (resolve, reject) => {

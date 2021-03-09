@@ -35,30 +35,31 @@ app
       .then((result) => res.json(result))
       .catch((err) => res.json(err))
   )
-  .put((req, res) => {
-    if (!req.body) res.sendStatus(400);
-    if (req.body[idKey] == req.params.value) {
-      db.update(req.body)
-        .then((result) => res.json(result))
-        .catch((err) => res.json(err));
-    }else{
-      res.json(MESSAGES.NOT_UPDATED())
+  .put((req,res)=>{
+    if(!req.body) return res.sendStatus(400);
+    if(req.body[idKey]===req.params.value){
+        db.update(req.body)
+        .then(result=>res.json(result))
+        .catch(error=>res.json(error));
     }
-  });
+    else {
+        res.json(MESSAGES.NOT_UPDATED());
+    }  
+});
 
-  app.post(`/${resource}`, async(req,res)=>{
-    if(!req.body) res.sendStatus(400)
-    try {
-      const status = await db.get(req.body[idKey])
-      if(status.code && status.code===CODES.NOT_FOUND){
-        res.json(await db.insert(req.body))
-      }else{
-        res.json(MESSAGES.NOT_INSERTED())
-      }
-    } catch (err) {
-      res.json(MESSAGES.PROGRAM_ERROR())
+app.post(`/${resource}`, async (req, res) => {
+  if (!req.body) res.sendStatus(400);
+  try {
+    const status = await db.get(req.body[idKey]);
+    if (status.code && status.code === CODES.NOT_FOUND) {
+      res.json(await db.insert(req.body));
+    } else {
+      res.json(MESSAGES.NOT_INSERTED());
     }
-  })
+  } catch (err) {
+    res.json(MESSAGES.PROGRAM_ERROR());
+  }
+});
 
 server.listen(
   port,

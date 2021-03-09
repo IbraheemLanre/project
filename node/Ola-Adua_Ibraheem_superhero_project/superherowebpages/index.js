@@ -28,7 +28,28 @@ app.get("/all", async (req, res) => {
   }
 });
 
-// app.route()
+app
+  .route("/getone")
+  .get((req, res) => {
+    res.render("getform", {
+      title: "Get",
+      header: "Get Superhero",
+      action: "/getone",
+    });
+  })
+  .post(async (req, res) => {
+    try {
+      const heroId = req.body.heroId;
+      const result = await fetch(
+        API_URL+'/'+heroId,
+        { mode: "cors" }
+      );
+      const data = await result.json();
+      res.render("superheropage", { data });
+    } catch (err) {
+      fetchError(res);
+    }
+  });
 
 server.listen(port, host, () => console.log(`Server ${host}:${port} is ready`));
 

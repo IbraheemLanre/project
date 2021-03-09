@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+    <title><%= title %></title>
+</head>
+<body>
+    <main>
+        <h1><%= header %></h1>
+        <form action="<%= action %>" method="POST">
+            <div>
+                <p>
+                    <label>HeroID: <input type="text" name="heroId"
+                        size="5" value="<%= heroId.value %>" 
+                        <%= heroId.readonly %> >
+                    </label>
+                </p>
+                 <p>
+                    <label>Name: <input type="text" name="name"
+                        size="30" value="<%= name.value %>" 
+                        <%= name.readonly %> >
+                    </label>
+                </p>
+                <p>
+                    <label>Year of Birth: <input type="text" name="yearOfBirth"
+                        size="5" value="<%= yearOfBirth.value %>" 
+                        <%= yearOfBirth.readonly %> >
+                    </label>
+                </p>
+                <p>
+                    <label>Superproperty: <input type="text" name="superproperty"
+                        size="15" value="<%= superproperty.value %>" 
+                        <%= superproperty.readonly %> >
+                    </label>
+                </p>
+                <p>
+                    <label>Costume: <input type="text" name="costume"
+                        size="30" value="<%= costume.value %>" 
+                        <%= costume.readonly %> >
+                    </label>
+                </p>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <a href="/"><button>Menu</button></a>
+    </main>
+</body>
+</html>

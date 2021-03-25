@@ -24,6 +24,16 @@ const useStyles = makeStyles({
   table: {
     minWidth: 700,
   },
+
+  title:{
+      textAlign:'center',
+  },
+
+  userTable:{
+      padding:'20px',
+  }
+
+
 });
 
 export { StyledTableCell, StyledTableRow, useStyles };

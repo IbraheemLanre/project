@@ -1,13 +1,19 @@
 import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 // import baseInstance from '../api'
-import "./UserStyles.js";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+import { StyledTableCell, StyledTableRow, useStyles } from "./UserStyles.js";
 
 const UserList = () => {
   const [userData, setUserData] = useState([]);
   //   const [userName, setUserName] = useState("");
   //   const [userRole, setUserRole] = useState("");
-
+  const classes = useStyles();
   const getAllUsers = () => {
     axios
       .get("https://reqres.in/api/users?page=2")
@@ -25,29 +31,32 @@ const UserList = () => {
 
   return (
     <>
-      <div>
-        <h1>User List</h1>
-        <table>
-          <thead>
-            <tr>
-              <th>UserId</th>
-              <th>Firstname</th>
-              <th>Lastname</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            {userData.map((user) => (
-              <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.first_name}</td>
-                <td>{user.last_name}</td>
-                <td>{user.email}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className={classes.userTable}>
+        <h1 className={classes.title}>User List</h1>
+        <TableContainer component={Paper}>
+          <Table className={classes.table} aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>UserId</StyledTableCell>
+                <StyledTableCell>Firstname</StyledTableCell>
+                <StyledTableCell>Lastname</StyledTableCell>
+                <StyledTableCell>Email</StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {userData.map((user) => (
+                <StyledTableRow key={user.id}>
+                  <StyledTableCell>{user.id}</StyledTableCell>
+                  <StyledTableCell>{user.first_name}</StyledTableCell>
+                  <StyledTableCell>{user.last_name}</StyledTableCell>
+                  <StyledTableCell>{user.email}</StyledTableCell>
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </div>
+
       {/* <div>
         <form onSubmit="">
           <label htmlFor="name">First name:</label>

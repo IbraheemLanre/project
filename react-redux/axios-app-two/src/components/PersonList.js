@@ -13,11 +13,14 @@ const PersonList = () => {
   const classes = useStyles();
 
   useEffect(() => {
-    axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
-      const persons = res.data;
-      console.log(persons);
-      setPersons(persons);
-    });
+    axios
+      .get("https://jsonplaceholder.typicode.com/users")
+      .then((res) => {
+        const persons = res.data;
+        console.log(persons);
+        setPersons(persons);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   return (
@@ -56,7 +59,6 @@ const PersonList = () => {
           </Table>
         </TableContainer>
       </div>
-     
     </>
   );
 };

@@ -11,8 +11,9 @@ import { StyledTableCell, StyledTableRow, useStyles } from "./UserStyles.js";
 
 const UserList = () => {
   const [userData, setUserData] = useState([]);
-  //   const [userName, setUserName] = useState("");
-  //   const [userRole, setUserRole] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userJob, setUserJob] = useState("");
+
   const classes = useStyles();
   const getAllUsers = () => {
     axios
@@ -28,6 +29,33 @@ const UserList = () => {
   useEffect(() => {
     getAllUsers();
   }, []);
+
+  //   To add users
+  const addUsers = async (e) => {
+    e.preventDefault();
+    await axios
+      .post("https://reqres.in/api/users", {
+        name: userName,
+        job: userJob,
+      })
+      .then((res) => {
+        alert(`Data was added successfully.
+    ID: ${res.data.id} 
+    Name: ${res.data.name}
+    Job: ${res.data.job}
+    Created At: ${res.data.createdAt}`);
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleuserNameChange = (e) => {
+    setUserName(e.target.value);
+  };
+
+  const handleJobChange = (e) => {
+    setUserJob(e.target.value);
+  };
 
   return (
     <>
@@ -57,19 +85,19 @@ const UserList = () => {
         </TableContainer>
       </div>
 
-      {/* <div>
-        <form onSubmit="">
+      <div className={classes.formContainer}>
+        <form onSubmit={addUsers}>
           <label htmlFor="name">First name:</label>
           <br />
-          <input type="text" id="name" name="fname" value="" onChange="" />
+          <input className={classes.inputData} type="text" id="username" name="username" value={userName} onChange={handleuserNameChange}/>
           <br />
-          <label htmlFor="role">Role:</label>
+          <label htmlFor="job">Job:</label>
           <br />
-          <input type="text" id="role" name="role" value="" onChange="" />
+          <input className={classes.inputData} type="text" id="job" name="job" value={userJob} onChange={handleJobChange} />
           <br />
-          <input type="submit" value="Submit" />
+          <input className={classes.inputSubmit} type="submit" value="Submit" />
         </form>
-      </div> */}
+      </div>
     </>
   );
 };

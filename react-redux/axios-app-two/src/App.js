@@ -1,11 +1,12 @@
 import React from "react";
-import PersonList from './components/PersonList'
+import PersonList from "./components/PersonList";
+import "./App.css";
 
 const App = () => {
   return (
-    <div>
+    <div className="App">
       <h1>AXIOS DEMO TWO</h1>
-      <PersonList/>
+      <PersonList />
     </div>
   );
 };

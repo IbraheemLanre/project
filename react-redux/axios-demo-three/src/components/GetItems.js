@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { getList } from "../storage/dataStorageLayer";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -10,17 +10,23 @@ import { StyledTableCell, StyledTableRow, useStyles } from "./ItemStyles.js";
 
 const GetItems = () => {
   const [lists, setLists] = useState([]);
+  const showAlert = false;
+  const mounted = useRef(true);
+
   const classes = useStyles();
 
   useEffect(() => {
-    let mounted = true;
+    mounted.current = true;
+    if (lists.length && !showAlert) {
+      return;
+    }
     getList().then((groceryItems) => {
-      if (mounted) {
+      if (mounted.current) {
         setLists(groceryItems);
       }
     });
-    return () => (mounted = false);
-  }, []);
+    return () => (mounted.current = false);
+  }, [showAlert, lists]);
 
   return (
     <div className={classes.itemTable}>
@@ -44,6 +50,7 @@ const GetItems = () => {
         </Table>
       </TableContainer>
     </div>
+    
   );
 };
 

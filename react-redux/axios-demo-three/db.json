@@ -1,7 +1,52 @@
 {
-  "list":[
-      {"id":1, "item":"Shoes"},
-      {"id":2, "item":"Belt"},
-      {"id":3, "item":"T-shirt"}
+  "list": [
+    {
+      "id": 1,
+      "item": "Shoes"
+    },
+    {
+      "id": 2,
+      "item": "Belt"
+    },
+    {
+      "id": 3,
+      "item": "T-shirt"
+    },
+    {
+      "item": "Jeans",
+      "id": 4
+    },
+    {
+      "item": "Beanie",
+      "id": 5
+    },
+    {
+      "item": "Socks",
+      "id": 6
+    },
+    {
+      "item": "Hoodie",
+      "id": 7
+    },
+    {
+      "item": "Sneakers",
+      "id": 8
+    },
+    {
+      "item": "Sneakers",
+      "id": 9
+    },
+    {
+      "item": "Sneakers",
+      "id": 10
+    },
+    {
+      "item": "Gloves",
+      "id": 11
+    },
+    {
+      "item": "Face-cap",
+      "id": 12
+    }
   ]
 }

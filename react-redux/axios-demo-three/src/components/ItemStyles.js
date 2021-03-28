@@ -31,6 +31,7 @@ const useStyles = makeStyles({
   itemTable: {
     padding: "20px",
   },
+
   inputData: {
     width: "20rem",
     padding: "12px 20px",
@@ -46,7 +47,7 @@ const useStyles = makeStyles({
     backgroundColor: "#275096",
     color: "white",
     padding: "14px 20px",
-    margin: "8px 0",
+    margin: "8px 8px",
     border: "none",
     borderRadius: "4px",
     cursor: "pointer",

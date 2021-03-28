@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { postItem } from "../storage/dataStorageLayer";
 import { useStyles } from "./ItemStyles.js";
+import {Link} from "react-router-dom";
 
 const PostItems = () => {
   const [newItem, setNewItem] = useState("");
@@ -49,6 +50,9 @@ const PostItems = () => {
         <br />
         <input className={classes.inputSubmit} type="submit" value="Submit" />
       </form>
+      <Link to="/">
+        <input className={classes.inputSubmit} type="button" value="Menu" />
+      </Link>
     </div>
   );
 };

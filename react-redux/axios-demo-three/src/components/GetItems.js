@@ -7,6 +7,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { StyledTableCell, StyledTableRow, useStyles } from "./ItemStyles.js";
+import {Link} from "react-router-dom";
 
 const GetItems = () => {
   const [lists, setLists] = useState([]);
@@ -49,8 +50,11 @@ const GetItems = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      <Link to="/">
+        <input className={classes.inputSubmit} type="button" value="Menu" />
+      </Link>
     </div>
-    
+
   );
 };
 

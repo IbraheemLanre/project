@@ -13,4 +13,13 @@ const postItem = (item) => {
     .then((res) => res.json)
     .catch((err) => console.log(err));
 };
-export { getList, postItem };
+
+const deleteItem = (id) => {
+  return fetch(`http://localhost:3001/list/${id}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((res) => res.json)
+    .catch((err) => console.log(err));
+};
+export { getList, postItem, deleteItem };

@@ -10,9 +10,12 @@ const Main = () => {
       <Link to="/getitem">
         <input className={classes.inputSubmit} type="button" value="Get All" />
       </Link>
-      
+
       <Link to="/postitem">
         <input className={classes.inputSubmit} type="button" value="Add Item" />
+      </Link>
+      <Link to="/deleteitem">
+        <input className={classes.inputSubmit} type="button" value="Delete Item" />
       </Link>
     </main>
   );

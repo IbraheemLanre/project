@@ -12,7 +12,7 @@ export const getAll = () => {
 };
 
 export const getEmployeeBoard = () => {
-  return axios.get(`${API_URL}/user`, { headers: authHeader() });
+  return axios.get(`${API_URL}/employee`, { headers: authHeader() });
 };
 
 export const getEmployerBoard =()=>{

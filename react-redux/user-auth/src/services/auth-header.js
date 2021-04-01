@@ -9,5 +9,5 @@ export const authHeader = () => {
   if (!user && !user.accessToken) {
     return {};
   }
-  return { Authorization: `Bearer: ${user.accessToken}` };
+  return { "x-access-token": user.accessToken };
 };

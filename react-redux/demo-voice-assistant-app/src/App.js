@@ -5,9 +5,8 @@ import useStyles from "./styles";
 import alanLogo from "./components/images/alan-logo-white.svg";
 import wordsToNumbers from "words-to-numbers";
 
-const alanKey =
-  "3c78f9ef36081fa6389430209a09e56a2e956eca572e1d8b807a3e2338fdd0dc/stage";
-// const newsKey = "b1f5497f9cf44b24922304484871e59a";
+
+const ALAN_API_KEY = process.env.REACT_APP_ALAN_API_KEY
 
 const App = () => {
   const [newsArticles, setNewsArticles] = useState([]);
@@ -16,7 +15,7 @@ const App = () => {
 
   useEffect(() => {
     alanBtn({
-      key: alanKey,
+      key: ALAN_API_KEY,
       onCommand: ({ command, articles, number }) => {
         if (command === "newHeadlines") {
           setNewsArticles(articles);

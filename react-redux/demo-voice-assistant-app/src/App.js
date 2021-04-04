@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import alanBtn from "@alan-ai/alan-sdk-web";
 import NewsCards from "./components/NewsCards/NewsCards";
 import useStyles from "./styles";
-import alanLogo from "./components/images/alan-logo-white.svg";
 import wordsToNumbers from "words-to-numbers";
+import Header from "./components/header/Header";
 
 
 const ALAN_API_KEY = process.env.REACT_APP_ALAN_API_KEY
@@ -43,7 +43,7 @@ const App = () => {
   return (
     <div>
       <div className={classes.logoContainer}>
-        <img src={alanLogo} className={classes.alanLogo} alt="alan logo" />
+        <Header/>
       </div>
       <NewsCards articles={newsArticles} activeArticle={activeArticle} />
     </div>

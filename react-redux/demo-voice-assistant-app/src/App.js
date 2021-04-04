@@ -5,8 +5,8 @@ import useStyles from "./styles";
 import wordsToNumbers from "words-to-numbers";
 import Header from "./components/header/Header";
 
-
-const ALAN_API_KEY = process.env.REACT_APP_ALAN_API_KEY
+const ALAN_API_KEY =
+  "3c78f9ef36081fa6389430209a09e56a2e956eca572e1d8b807a3e2338fdd0dc/stage";
 
 const App = () => {
   const [newsArticles, setNewsArticles] = useState([]);
@@ -43,7 +43,7 @@ const App = () => {
   return (
     <div>
       <div className={classes.logoContainer}>
-        <Header/>
+        <Header />
       </div>
       <NewsCards articles={newsArticles} activeArticle={activeArticle} />
     </div>

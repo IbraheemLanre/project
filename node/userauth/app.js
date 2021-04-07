@@ -10,11 +10,11 @@ const app = express();
 
 const server = http.createServer(app);
 
-let corsOptions = {
-  origin: "http://localhost:3000",
-};
+// let corsOptions = {
+//   origin: "http://localhost:3001",
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 app.use(express.json());
 
@@ -39,13 +39,16 @@ db.mongoose
 
 app.get("/", (req, res) => res.send("User Authentication App"));
 
+require("./routes/auth.routes")(app);
+require("./routes/user.routes")(app);
+
 server.listen(PORT, HOST, () => {
   console.log(`Server ${HOST} is up and running on port:${PORT}`);
 });
 
 const initial = () => {
   Role.estimatedDocumentCount((err, count) => {
-    if (!err && count == 0) {
+    if (!err && count === 0) {
       new Role({ name: "user" }).save((err) => {
         if (err) {
           console.log("error", err);

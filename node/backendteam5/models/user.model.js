@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const UserSchema = new mongoose.Schema({
+let UserSchema = new mongoose.Schema({
     username: {type: String, required:[true, "Missing field"]},
     firstname:{type: String, required:[true, "Missing field"]},
     lastname: {type: String, required:[true, "Missing field"]},
@@ -10,5 +10,6 @@ const UserSchema = new mongoose.Schema({
 
 })
 
-export const User = mongoose.model("User", UserSchema)
+const User = mongoose.model("User", UserSchema)
 
+module.exports = User

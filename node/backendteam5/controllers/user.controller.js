@@ -3,9 +3,9 @@ exports.AllUsers = (req, res) => {
 };
 
 exports.employeeProfile = (req, res) => {
-  res.status(200).send("Employee Content.");
+  res.status(200).send("Employee Profile.");
 };
 
 exports.EmployerProfile = (req, res) => {
-  res.status(200).send("Employer Content.");
+  res.status(200).send("Employer Profile.");
 };

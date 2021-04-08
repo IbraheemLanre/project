@@ -6,7 +6,6 @@ env.config();
 const port = process.env.PORT;
 const host = process.env.HOST;
 let db_host = process.env.DB_HOST;
-const cors = require("cors");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

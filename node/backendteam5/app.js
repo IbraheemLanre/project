@@ -15,7 +15,7 @@ const db = require("./models");
 const Role = db.role;
 
 db.mongoose
-  .connect("mongodb+srv://team5:teliateam5@cluster0.bqo7c.mongodb.net/backend_db", {
+  .connect(db_host, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

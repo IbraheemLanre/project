@@ -4,8 +4,8 @@ const config = process.env.SECRET;
 const db = require("../models");
 const User = db.user;
 const Role = db.role;
-let jwt = require("jsonwebtoken");
-let bcrypt = require("bcryptjs");
+var jwt = require("jsonwebtoken");
+var bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
   const user = new User({
@@ -66,7 +66,7 @@ exports.signin = (req, res) => {
         return res.status(404).send({ message: "User not found." });
       }
 
-      let isValidPassword = bcrypt.compareSync(
+      var isValidPassword = bcrypt.compareSync(
         req.body.password,
         user.password
       );
@@ -77,11 +77,11 @@ exports.signin = (req, res) => {
           .send({ accessToken: null, message: "Invalid Password!" });
       }
 
-      let token = jwt.sign({ id: user.id }, config, {
+      var token = jwt.sign({ id: user.id }, config, {
         expiresIn: 86400, //24 hours
       });
 
-      let authorized = [];
+      var authorized = [];
 
       for (let i = 0; i < user.roles.length; i++) {
         authorized.push("ROLE_" + user.roles[i].name.toUpperCase());

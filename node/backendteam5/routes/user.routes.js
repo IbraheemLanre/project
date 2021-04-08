@@ -11,6 +11,9 @@ module.exports = function (app) {
   });
 
   app.get("/api/all", controller.AllUsers);
+
+  app.get("/api/user",[authJwt.verifyToken], controller.userProfile )
+  
   app.get(
     "/api/employee",
     [authJwt.verifyToken, authJwt.isEmployee],

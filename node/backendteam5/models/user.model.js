@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 
-let UserSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
     username: {type: String, required:[true, "Missing field"]},
     firstname:{type: String, required:[true, "Missing field"]},
     lastname: {type: String, required:[true, "Missing field"]},
     email:{type:String, required:[true, "Missing field"]},
     password:{type: String, required:[true, "Missing field"]},
-    role: [{type: mongoose.Schema.Types.ObjectId, ref:"Role"}]
+    roles: [{type: mongoose.Schema.Types.ObjectId, ref:"Role"}]
 
 })
 

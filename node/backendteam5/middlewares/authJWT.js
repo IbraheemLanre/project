@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const { verifyToken } = require("../../userauth/middlewares/authJwt");
 const env = require("dotenv");
 env.config();
 const config = process.env.SECRET;
@@ -14,7 +13,7 @@ verifyToken = (req, res, next) => {
     return res.status(403).send({ message: "No token provided" });
   }
 
-  jwt.verify(token, config, (err, decode) => {
+  jwt.verify(token, config, (err, decoded) => {
     if (err) {
       return res.status(401).send({ message: "UNAUTHORIZED" });
     }
@@ -23,7 +22,7 @@ verifyToken = (req, res, next) => {
   });
 };
 
-isAdmin = (req, res, next) => {
+isEmployee = (req, res, next) => {
   User.findById(req.userId).exec((err, user) => {
     if (err) {
       return res.status(500).send({ message: err });

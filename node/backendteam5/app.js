@@ -34,6 +34,9 @@ app.get("/", (req, res) => {
   res.send("TELIA PROJECT TEAM 5 - BACKEND");
 });
 
+require("./routes/auth.routes")(app);
+require("./routes/user.routes")(app);
+
 server.listen(port, host, () => {
   console.log(`Server ${host} is up and running on port:${port}`);
 });

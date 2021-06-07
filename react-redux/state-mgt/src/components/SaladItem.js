@@ -18,7 +18,7 @@ const useStyles = createUseStyles({
     fontSize: 80,
   },
   wrapper: {
-    border: "lightgrey solid 1px",
+    border: "lightgrey solid 2px",
     margin: 20,
     padding: 25,
     position: "relative",
